@@ -1,5 +1,6 @@
 package com.example.shoplistapp.screens.listScreen
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -25,6 +26,11 @@ class ListFragment : Fragment() {
     private lateinit var toolbar: MaterialToolbar
     private lateinit var adapter: ShopItemAdapter
 
+    companion object{
+
+        const val SHOP_ITEM_KEY = "SHOP_ITEM"
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -33,6 +39,7 @@ class ListFragment : Fragment() {
         return binding.root
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel = ViewModelProvider(this)[ListFragmentViewModel::class.java]
@@ -41,7 +48,7 @@ class ListFragment : Fragment() {
 
         viewModel.initDB()
 
-        adapter = ShopItemAdapter(viewModel)
+        adapter = ShopItemAdapter()
         recyclerView.adapter = adapter
 
         viewModel.getShopList().observe(viewLifecycleOwner){
@@ -61,15 +68,39 @@ class ListFragment : Fragment() {
                 binding.fabAddUp.visibility = View.INVISIBLE
                 binding.fab.visibility = View.VISIBLE
             }
-
             setupItemTouchHelper(it)
         }
 
+        setupListeners()
+    }
+
+    private fun setupListeners() {
+
+        adapter.onChangeListener = {
+
+            viewModel.editShopItem(it)
+
+            recyclerView.post {
+
+                adapter.notifyItemChanged(it.id)
+            }
+        }
+
+        adapter.onClickListener = {
+
+            val bundle = Bundle()
+            bundle.putSerializable(SHOP_ITEM_KEY, it)
+
+            findNavController().navigate(R.id.action_listFragment_to_editFragment, bundle)
+        }
+
         toolbar.setOnMenuItemClickListener {
-            if(it.itemId == R.id.item_delete){
+            if (it.itemId == R.id.item_delete) {
+
+                //TODO: Диалоговое окно "Точно удалить список?"
 
                 viewModel.deleteShopList()
-            } else if(it.itemId == R.id.item_info){
+            } else if (it.itemId == R.id.item_info) {
                 //TODO: Переход к окну справки
             }
             true
@@ -99,6 +130,7 @@ class ListFragment : Fragment() {
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
 
                 val shopItem = it[viewHolder.adapterPosition]
+                //TODO: Диалоговое окно "Точно удалить продукт?"
 
                 viewModel.deleteShopItem(shopItem)
                 adapter.notifyItemRemoved(viewHolder.adapterPosition)
@@ -109,6 +141,6 @@ class ListFragment : Fragment() {
 
     private fun moveToAddFragment(){
 
-        //TODO: Переход к окну добавления
+        findNavController().navigate(R.id.action_listFragment_to_addFragment)
     }
 }

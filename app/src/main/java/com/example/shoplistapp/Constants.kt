@@ -1,5 +1,5 @@
 package com.example.shoplistapp
 
-import com.example.shoplistapp.repository.ShopListRepository
+import com.example.shoplistapp.screens.MainActivity
 
-lateinit var REPOSITORY : ShopListRepository
+lateinit var MAIN: MainActivity

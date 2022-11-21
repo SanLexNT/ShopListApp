@@ -22,12 +22,12 @@ class ShopListRepositoryImpl(private val shopDao: ShopDao) : ShopListRepository 
         shopDao.editShopItem(shopItem)
     }
 
-    override fun deleteShopItem(id: Int) {
-        shopDao.deleteShopItem(id)
+    override fun deleteShopItem(shopItem: ShopItem) {
+        shopDao.deleteShopItem(shopItem)
     }
 
     override fun deleteShopList() {
-        shopDao.deleteShopList(getShopList().value)
+        shopDao.deleteShopList()
     }
 
     companion object {

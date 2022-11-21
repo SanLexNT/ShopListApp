@@ -6,7 +6,7 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.example.shoplistapp.model.ShopItem
 
-@Database(entities = [ShopItem::class], version = 1)
+@Database(entities = [ShopItem::class], version = 1, exportSchema = false)
 abstract class ShopListDatabase : RoomDatabase() {
 
     abstract fun getDao() : ShopDao

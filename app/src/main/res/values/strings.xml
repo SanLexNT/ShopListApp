@@ -6,4 +6,8 @@
     <string name="no_list">Список пуст</string>
     <string name="add_shop_item">Добавить покупку</string>
     <string name="add">Добавить</string>
+    <string name="name_shop_item">Продукт</string>
+    <string name="count_shop_item">Количество</string>
+    <string name="error_incorrect_data">Некорректные данные</string>
+    <string name="edit">Изменить</string>
 </resources>

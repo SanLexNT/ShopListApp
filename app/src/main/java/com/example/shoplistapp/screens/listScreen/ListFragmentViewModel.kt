@@ -32,12 +32,13 @@ class ListFragmentViewModel(application: Application) : AndroidViewModel(applica
 
     fun deleteShopItem(shopItem: ShopItem){
 
-        repository.deleteShopItem(shopItem.id)
+        repository.deleteShopItem(shopItem)
     }
 
-    fun changeStateShopItem(shopItem: ShopItem){
+    fun editShopItem(shopItem: ShopItem){
 
         shopItem.isEnabled = !shopItem.isEnabled
+
         repository.editShopItem(shopItem)
     }
 }

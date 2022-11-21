@@ -20,8 +20,8 @@ interface ShopDao {
     fun editShopItem(shopItem: ShopItem)
 
     @Delete
-    fun deleteShopItem(id: Int)
+    fun deleteShopItem(shopItem: ShopItem)
 
     @Query("DELETE FROM shopItems")
-    fun deleteShopList(shopList: List<ShopItem>?)
+    fun deleteShopList()
 }

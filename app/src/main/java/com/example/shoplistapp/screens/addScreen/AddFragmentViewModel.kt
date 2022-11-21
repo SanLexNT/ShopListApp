@@ -3,7 +3,6 @@ package com.example.shoplistapp.screens.addScreen
 import android.app.Application
 import android.widget.Toast
 import androidx.lifecycle.AndroidViewModel
-import com.example.shoplistapp.R
 import com.example.shoplistapp.database.ShopListDatabase
 import com.example.shoplistapp.model.ShopItem
 import com.example.shoplistapp.repository.ShopListRepository
@@ -26,9 +25,9 @@ class AddFragmentViewModel(application: Application) : AndroidViewModel(applicat
         repository.addShopItem(shopItem)
     }
 
-    fun showError(){
+    fun showError(text: String){
 
-        Toast.makeText(context, context.getString(R.string.error_incorrect_data),
+        Toast.makeText(context, text,
                 Toast.LENGTH_SHORT).show()
     }
 
@@ -46,9 +45,14 @@ class AddFragmentViewModel(application: Application) : AndroidViewModel(applicat
         }
     }
 
-    fun validateInput(product: String, count: Int) : Boolean{
+    fun validateName(product: String) : Boolean{
 
-        return product.isNotBlank() && count > 0
+        return product.isNotBlank()
+    }
+
+    fun validateCount(count: Int) : Boolean{
+
+        return count > 0
     }
 
 }

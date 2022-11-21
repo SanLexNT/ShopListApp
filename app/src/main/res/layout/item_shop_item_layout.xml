@@ -5,7 +5,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:backgroundTint="@color/main_color"
-    android:layout_margin="@dimen/default_margin"
+    android:layout_marginHorizontal="@dimen/default_margin"
+    android:layout_marginVertical="@dimen/small_margin"
     app:cardCornerRadius="@dimen/small_margin"
     app:cardElevation="4dp">
 

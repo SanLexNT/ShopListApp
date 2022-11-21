@@ -29,8 +29,12 @@
         app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
 
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            app:helperText=""
+            app:helperTextTextColor="@android:color/holo_red_dark"
+            app:boxBackgroundColor="@color/border_color"
             android:layout_marginVertical="@dimen/default_margin">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -38,15 +42,18 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="text"
-                android:textColor="@color/black"
-                android:hint="@string/name_shop_item"
-                android:textColorHint="@color/black"/>
+                android:lines="1"
+                android:hint="@string/name_shop_item"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilCount"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            app:boxBackgroundColor="@color/border_color"
+            app:helperText=""
+            app:helperTextTextColor="@android:color/holo_red_dark">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/countEt_edit"

@@ -2,11 +2,10 @@ package com.example.shoplistapp.screens.listScreen
 
 import android.annotation.SuppressLint
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toolbar
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.ItemTouchHelper
@@ -101,7 +100,8 @@ class ListFragment : Fragment() {
 
                 viewModel.deleteShopList()
             } else if (it.itemId == R.id.item_info) {
-                //TODO: Переход к окну справки
+
+                findNavController().navigate(R.id.action_listFragment_to_helpFragment)
             }
             true
         }

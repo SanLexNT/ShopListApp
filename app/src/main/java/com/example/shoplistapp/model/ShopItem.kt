@@ -12,5 +12,5 @@ data class ShopItem(
 
     var name: String,
     var count: Int,
-    var isEnabled: Boolean = true
+    var isEnabled: Boolean = false
 ) : Serializable

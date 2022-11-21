@@ -9,6 +9,6 @@
     <color name="white">#FFFFFFFF</color>
 
     <color name="main_color">#2196F3</color>
-    <color name="border_color">#BBDEFB</color>
-
+    <color name="status_bar_color">#1E88E5</color>
+    <color name="border_color">#CFD8DC</color>
 </resources>

@@ -1,7 +1,5 @@
 <resources>
     <string name="app_name">ShopListApp</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="shop_list">Список покупок</string>
     <string name="no_list">Список пуст</string>
     <string name="add_shop_item">Добавить покупку</string>
@@ -10,4 +8,15 @@
     <string name="count_shop_item">Количество</string>
     <string name="error_incorrect_data">Некорректные данные</string>
     <string name="edit">Изменить</string>
+    <string name="error_name_field">Название не должно быть пустым</string>
+    <string name="error_count_field">Количество не должно быть пустым</string>
+    <string name="error_count_size">Количество должно быть больше 0</string>
+    <string name="help">Справка</string>
+    <string name="delete">Удалить покупку</string>
+    <string name="cancel_buy">Отметка покупки</string>
+    <string name="title_delete_help">Как удалить покупку?</string>
+    <string name="delete_instruction">Для удаления покупки перетащите карточку влево или вправо. Затем подтвердите действие</string>
+    <string name="title_check_help">Как отметить покупку?</string>
+    <string name="check_help_instructions">Чтобы отметить покупку как сделанную, необходимо в карточке нажать на квадратик, а внутри него появится галочка.
+        \nЕсли покупка вновь понадобится, можно сделать обратное действие, и тогда покупка будет отмечена как несделанная</string>
 </resources>

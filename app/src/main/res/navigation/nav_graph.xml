@@ -16,23 +16,48 @@
         <action
             android:id="@+id/action_listFragment_to_editFragment"
             app:destination="@id/editFragment" />
+        <action
+            android:id="@+id/action_listFragment_to_helpFragment"
+            app:destination="@id/helpFragment" />
     </fragment>
     <fragment
         android:id="@+id/addFragment"
         android:name="com.example.shoplistapp.screens.addScreen.AddFragment"
         android:label="fragment_add"
-        tools:layout="@layout/fragment_add" >
-        <action
-            android:id="@+id/action_addFragment_to_listFragment"
-            app:destination="@id/listFragment" />
-    </fragment>
+        tools:layout="@layout/fragment_add" />
     <fragment
         android:id="@+id/editFragment"
         android:name="com.example.shoplistapp.screens.editScreen.EditFragment"
         android:label="fragment_edit"
-        tools:layout="@layout/fragment_edit" >
+        tools:layout="@layout/fragment_edit" />
+    <fragment
+        android:id="@+id/helpFragment"
+        android:name="com.example.shoplistapp.screens.infoScreens.HelpFragment"
+        android:label="fragment_help"
+        tools:layout="@layout/fragment_help" >
         <action
-            android:id="@+id/action_editFragment_to_listFragment"
+            android:id="@+id/action_helpFragment_to_helpDeleteFragment"
+            app:destination="@id/helpDeleteFragment" />
+        <action
+            android:id="@+id/action_helpFragment_to_helpCheckFragment"
+            app:destination="@id/helpCheckFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/helpDeleteFragment"
+        android:name="com.example.shoplistapp.screens.infoScreens.HelpDeleteFragment"
+        android:label="fragment_help_delete"
+        tools:layout="@layout/fragment_help_delete" >
+        <action
+            android:id="@+id/action_helpDeleteFragment_to_listFragment"
+            app:destination="@id/listFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/helpCheckFragment"
+        android:name="com.example.shoplistapp.screens.infoScreens.HelpCheckFragment"
+        android:label="fragment_help_check"
+        tools:layout="@layout/fragment_help_check" >
+        <action
+            android:id="@+id/action_helpCheckFragment_to_listFragment"
             app:destination="@id/listFragment" />
     </fragment>
 </navigation>

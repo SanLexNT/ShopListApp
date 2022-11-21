@@ -10,6 +10,6 @@ interface ShopListRepository {
     fun addShopItem(shopItem: ShopItem)
     fun editShopItem(shopItem: ShopItem)
     fun deleteShopItem(id: Int)
-    fun deleteShopList(shopList: List<ShopItem>)
+    fun deleteShopList()
 
 }

@@ -26,7 +26,19 @@ class ShopListRepositoryImpl(private val shopDao: ShopDao) : ShopListRepository 
         shopDao.deleteShopItem(id)
     }
 
-    override fun deleteShopList(shopList: List<ShopItem>) {
-        shopDao.deleteShopList(shopList)
+    override fun deleteShopList() {
+        shopDao.deleteShopList(getShopList().value)
+    }
+
+    companion object {
+        private var instance: ShopListRepositoryImpl? = null
+
+        fun getInstance(shopDao: ShopDao): ShopListRepositoryImpl {
+            if (instance == null) {
+
+                instance = ShopListRepositoryImpl(shopDao)
+            }
+            return instance as ShopListRepositoryImpl
+        }
     }
 }

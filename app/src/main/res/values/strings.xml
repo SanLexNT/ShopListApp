@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">ShopListApp</string>
+    <string name="app_name">Список покупок</string>
     <string name="shop_list">Список покупок</string>
     <string name="no_list">Список пуст</string>
     <string name="add_shop_item">Добавить покупку</string>
@@ -15,8 +15,13 @@
     <string name="delete">Удалить покупку</string>
     <string name="cancel_buy">Отметка покупки</string>
     <string name="title_delete_help">Как удалить покупку?</string>
-    <string name="delete_instruction">Для удаления покупки перетащите карточку влево или вправо. Затем подтвердите действие</string>
+    <string name="delete_instruction">Для удаления покупки нажмите на карточке, а затем на значок корзины в верхнем меню нового окна</string>
     <string name="title_check_help">Как отметить покупку?</string>
     <string name="check_help_instructions">Чтобы отметить покупку как сделанную, необходимо в карточке нажать на квадратик, а внутри него появится галочка.
         \nЕсли покупка вновь понадобится, можно сделать обратное действие, и тогда покупка будет отмечена как несделанная</string>
+    <string name="confirm_act_dialog">Подтвердите действие</string>
+    <string name="dialog_clear_message">Хотите очистить список?</string>
+    <string name="dialog_yes">Да</string>
+    <string name="dialog_no">Нет</string>
+    <string name="dialog_delete_item_message">Хотите удалить покупку?</string>
 </resources>

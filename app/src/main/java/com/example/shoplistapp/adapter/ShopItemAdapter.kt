@@ -2,23 +2,20 @@ package com.example.shoplistapp.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.CompoundButton
-import androidx.lifecycle.viewModelScope
 import androidx.recyclerview.widget.RecyclerView.Adapter
 import com.example.shoplistapp.R
 import com.example.shoplistapp.model.ShopItem
-import com.example.shoplistapp.screens.listScreen.ListFragmentViewModel
 import kotlinx.android.synthetic.main.item_shop_item_layout.view.*
-import kotlinx.coroutines.launch
 
 class ShopItemAdapter() : Adapter<ShopListViewHolder>() {
 
-    var shopItems = emptyList<ShopItem>()
-    var onClickListener : ((shopItem: ShopItem) -> Unit) ?= null
-    var onChangeListener : ((shopItem : ShopItem) -> Unit) ?= null
+    var shopItems = listOf<ShopItem>()
+    var onClickListener: ((shopItem: ShopItem) -> Unit)? = null
+    var onChangeListener: ((shopItem: ShopItem) -> Unit)? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ShopListViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_shop_item_layout, parent, false)
+        val view = LayoutInflater.from(parent.context)
+            .inflate(R.layout.item_shop_item_layout, parent, false)
         return ShopListViewHolder(view)
     }
 
@@ -33,13 +30,15 @@ class ShopItemAdapter() : Adapter<ShopListViewHolder>() {
 
             onChangeListener?.invoke(shopItem)
         }
+
     }
 
     override fun getItemCount(): Int {
         return shopItems.size
     }
 
-    fun setList(shopList: List<ShopItem>){
+
+    fun setList(shopList: List<ShopItem>) {
 
         shopItems = shopList
         notifyItemRangeChanged(0, itemCount)
@@ -52,6 +51,7 @@ class ShopItemAdapter() : Adapter<ShopListViewHolder>() {
 
             onClickListener?.invoke(shopItems[holder.adapterPosition])
         }
+
     }
 
 }

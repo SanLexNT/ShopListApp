@@ -17,7 +17,7 @@
             app:title="@string/edit"
             app:titleTextColor="@color/white"
             android:background="@color/main_color"
-            app:menu="@menu/menu_add_edit"/>
+            app:menu="@menu/menu_edit"/>
 
     </com.google.android.material.appbar.AppBarLayout>
 
@@ -35,6 +35,7 @@
             app:helperText=""
             app:helperTextTextColor="@android:color/holo_red_dark"
             app:boxBackgroundColor="@color/border_color"
+            app:hintTextColor="@color/text_color"
             android:layout_marginVertical="@dimen/default_margin">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -52,6 +53,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:boxBackgroundColor="@color/border_color"
+            app:hintTextColor="@color/text_color"
             app:helperText=""
             app:helperTextTextColor="@android:color/holo_red_dark">
 

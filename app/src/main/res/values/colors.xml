@@ -11,4 +11,5 @@
     <color name="main_color">#2196F3</color>
     <color name="status_bar_color">#1E88E5</color>
     <color name="border_color">#CFD8DC</color>
+    <color name="text_color">#37474F</color>
 </resources>

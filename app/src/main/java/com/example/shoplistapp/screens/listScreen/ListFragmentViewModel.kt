@@ -30,10 +30,6 @@ class ListFragmentViewModel(application: Application) : AndroidViewModel(applica
         repository.deleteShopList()
     }
 
-    fun deleteShopItem(shopItem: ShopItem){
-
-        repository.deleteShopItem(shopItem)
-    }
 
     fun editShopItem(shopItem: ShopItem){
 
@@ -41,4 +37,7 @@ class ListFragmentViewModel(application: Application) : AndroidViewModel(applica
 
         repository.editShopItem(shopItem)
     }
+
+
+
 }

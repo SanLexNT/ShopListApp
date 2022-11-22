@@ -17,7 +17,7 @@
             app:title="@string/add"
             app:titleTextColor="@color/white"
             android:background="@color/main_color"
-            app:menu="@menu/menu_add_edit"/>
+            app:menu="@menu/menu_add"/>
 
     </com.google.android.material.appbar.AppBarLayout>
 
@@ -33,6 +33,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:boxBackgroundColor="@color/border_color"
+            app:hintTextColor="@color/text_color"
             app:helperText=""
             app:helperTextTextColor="@android:color/holo_red_dark"
             android:layout_marginVertical="@dimen/default_margin">
@@ -51,6 +52,7 @@
             android:layout_width="match_parent"
             android:id="@+id/tilCount_add"
             app:boxBackgroundColor="@color/border_color"
+            app:hintTextColor="@color/text_color"
             app:helperText=""
             app:helperTextTextColor="@android:color/holo_red_dark"
             android:layout_height="wrap_content">

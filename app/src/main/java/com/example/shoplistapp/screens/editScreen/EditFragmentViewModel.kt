@@ -27,6 +27,11 @@ class EditFragmentViewModel(application: Application) : AndroidViewModel(applica
         repository.editShopItem(shopItem)
     }
 
+    fun deleteShopItem(shopItem: ShopItem){
+
+        repository.deleteShopItem(shopItem)
+    }
+
     fun showError(text: String){
 
         Toast.makeText(context, text,

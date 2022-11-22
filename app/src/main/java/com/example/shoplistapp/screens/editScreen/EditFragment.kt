@@ -1,10 +1,12 @@
 package com.example.shoplistapp.screens.editScreen
 
+import android.content.DialogInterface
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
+import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -59,6 +61,27 @@ class EditFragment : Fragment() {
                 } else{
                     viewModel.showError(resources.getString(R.string.error_incorrect_data))
                 }
+            } else if(it.itemId == R.id.item_delete){
+
+               val alertDialogBuilder = AlertDialog.Builder(requireContext())
+                    .setTitle(getString(R.string.confirm_act_dialog))
+                    .setMessage(getString(R.string.dialog_delete_item_message))
+                    .setCancelable(false)
+                    .setPositiveButton(getString(R.string.dialog_yes)){ _, _ ->
+
+                        viewModel.deleteShopItem(shopItem)
+                        findNavController().popBackStack()
+                    }
+                    .setNegativeButton(getString(R.string.dialog_no)){ dialogInterface: DialogInterface, _ ->
+
+                        dialogInterface.cancel()
+                    }
+
+                val alertDialog = alertDialogBuilder.create()
+                alertDialog.show()
+
+                alertDialog.getButton(DialogInterface.BUTTON_NEGATIVE).setTextColor(resources.getColor(android.R.color.holo_red_dark, null))
+
             }
             true
 

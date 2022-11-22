@@ -1,6 +1,5 @@
 package com.example.shoplistapp.screens.listScreen
 
-import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -8,12 +7,10 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.example.shoplistapp.R
 import com.example.shoplistapp.adapter.ShopItemAdapter
 import com.example.shoplistapp.databinding.FragmentListBinding
-import com.example.shoplistapp.model.ShopItem
 import com.google.android.material.appbar.MaterialToolbar
 
 
@@ -25,7 +22,7 @@ class ListFragment : Fragment() {
     private lateinit var toolbar: MaterialToolbar
     private lateinit var adapter: ShopItemAdapter
 
-    companion object{
+    companion object {
 
         const val SHOP_ITEM_KEY = "SHOP_ITEM"
     }
@@ -38,7 +35,6 @@ class ListFragment : Fragment() {
         return binding.root
     }
 
-    @SuppressLint("NotifyDataSetChanged")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel = ViewModelProvider(this)[ListFragmentViewModel::class.java]
@@ -50,27 +46,27 @@ class ListFragment : Fragment() {
         adapter = ShopItemAdapter()
         recyclerView.adapter = adapter
 
-        viewModel.getShopList().observe(viewLifecycleOwner){
+        viewModel.getShopList().observe(viewLifecycleOwner) {
 
             adapter.setList(it.asReversed())
 
-            if(it.isEmpty() || it == null){
+            setupListeners()
+
+            if (it.isEmpty() || it == null) {
 
                 binding.tvNoList.visibility = View.VISIBLE
                 binding.tvAdd.visibility = View.VISIBLE
                 binding.fabAddUp.visibility = View.VISIBLE
                 binding.fab.visibility = View.INVISIBLE
-            } else{
+            } else {
 
                 binding.tvNoList.visibility = View.INVISIBLE
                 binding.tvAdd.visibility = View.INVISIBLE
                 binding.fabAddUp.visibility = View.INVISIBLE
                 binding.fab.visibility = View.VISIBLE
             }
-            setupItemTouchHelper(it)
         }
 
-        setupListeners()
     }
 
     private fun setupListeners() {
@@ -93,12 +89,16 @@ class ListFragment : Fragment() {
             findNavController().navigate(R.id.action_listFragment_to_editFragment, bundle)
         }
 
+
         toolbar.setOnMenuItemClickListener {
             if (it.itemId == R.id.item_delete) {
 
-                //TODO: Диалоговое окно "Точно удалить список?"
+               viewModel.deleteShopList()
+                recyclerView.post {
 
-                viewModel.deleteShopList()
+                    adapter.notifyDataSetChanged()
+                }
+
             } else if (it.itemId == R.id.item_info) {
 
                 findNavController().navigate(R.id.action_listFragment_to_helpFragment)
@@ -116,31 +116,11 @@ class ListFragment : Fragment() {
         }
     }
 
-    private fun setupItemTouchHelper(it: List<ShopItem>) {
-        val itemTouchHelper = ItemTouchHelper(object : ItemTouchHelper.SimpleCallback
-            (0, ItemTouchHelper.RIGHT or ItemTouchHelper.LEFT) {
-            override fun onMove(
-                recyclerView: RecyclerView,
-                viewHolder: RecyclerView.ViewHolder,
-                target: RecyclerView.ViewHolder
-            ): Boolean {
-                return false
-            }
 
-            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
-
-                val shopItem = it[viewHolder.adapterPosition]
-                //TODO: Диалоговое окно "Точно удалить продукт?"
-
-                viewModel.deleteShopItem(shopItem)
-                adapter.notifyItemRemoved(viewHolder.adapterPosition)
-            }
-        })
-        itemTouchHelper.attachToRecyclerView(recyclerView)
-    }
-
-    private fun moveToAddFragment(){
+    private fun moveToAddFragment() {
 
         findNavController().navigate(R.id.action_listFragment_to_addFragment)
     }
+
+
 }
